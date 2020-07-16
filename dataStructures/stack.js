@@ -23,5 +23,15 @@ class Stack {
     }
     return this.size += 1;
   }
+  pop() {
+    if (!this.first) return null;
+    let oldFirst = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size -= 1;
+    return oldFirst.val;
+  }
 }
 
