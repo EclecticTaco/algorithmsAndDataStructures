@@ -40,10 +40,10 @@ class BinarySearchTree {
       if (node.val === val) return node;
       if (!node.left && !node.right) return undefined;
 
-      if (val > node.val) traverse(node.right);
-      if (val < node.val) traverse(node.left);
+      if (val > node.val) return traverse(node.right);
+      if (val < node.val) return traverse(node.left);
     }
-    traverse(this.root);
+    return traverse(this.root);
   }
 }
 /* 
