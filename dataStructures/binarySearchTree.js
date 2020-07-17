@@ -31,25 +31,45 @@ class BinarySearchTree {
         traverse(node.right)
       }
     }
-    traverse(this.root)
+    return traverse(this.root)
+  }
+  find(val) {
+    if (!this.root) return undefined;
+
+    const traverse = (node) => {
+      if (node.val === val) return node;
+      if (!node.left && !node.right) return undefined;
+
+      if (val > node.val) traverse(node.right);
+      if (val < node.val) traverse(node.left);
+    }
+    traverse(this.root);
   }
 }
 /* 
-create new node
-  start at root (pass in val and node)
+if there is no root
+  return undefined
 
-  if no root, set node to root 
+pass root into find func
+  if node val and val match
+    return node
+  if node does not have left or right
+    return undefined
 
-  if root 
-    check if val is greater than or less than
-    if greater 
-      if there is no node to the right
-        set new node to right
-      if there is node to right
-        pass in that node into function recursively
-    if less
-      if no node to left
-        set new node to left
-      if node to left
-        pass in that node into func recursively
+  if val is greater than node val
+    pass right node into find func
+  if val is less than node val
+    pass left node into find func
+
+    
 */
+
+let tree = new BinarySearchTree();
+tree.insert(10)
+tree.insert(5)
+tree.insert(13)
+tree.insert(11)
+tree.insert(2)
+tree.insert(16)
+tree.insert(7)
+console.log(tree.find(2))
