@@ -20,14 +20,13 @@ class MaxBinaryHeap {
     }
   }
   extractMax() {
-    let root = this.values[0];
-    let minIdx = this.values.length - 1;
-    let min = this.values[minIdx]
-    this.values[minIdx] = root;
-    this.values[0] = min;
-    this.values.pop()
-    this.cascade(0)
-    return root;
+    const min = this.values[0];
+    const end = this.values.pop();
+    if(this.values.length > 0){
+        this.values[0] = end;
+        this.cascade(0);
+    }
+    return min;
   }
   cascade(index) {
     if (index >= this.values.length - 1) return;
@@ -40,25 +39,21 @@ class MaxBinaryHeap {
       if (leftChild > rightChild) {
         this.values[index] = leftChild; // swap old parent with leftChild
         this.values[leftChildIdx] = parent; 
-        this.cascade(leftChildIdx);
-        return;
+        return this.cascade(leftChildIdx);
       } else {
         this.values[index] = rightChild;
         this.values[rightChildIdx] = parent;
-        this.cascade(rightChildIdx);
-        return;
+        return this.cascade(rightChildIdx);
       }
     }
     if (leftChild > parent) {
       this.values[index] = leftChild; // swap old parent with leftChild
       this.values[leftChildIdx] = parent; 
-      this.cascade(leftChildIdx);
-      return;
+      return this.cascade(leftChildIdx);
     } else if (rightChild > parent) {
       this.values[index] = rightChild;
       this.values[rightChildIdx] = parent;
-      this.cascade(rightChildIdx);
-      return;
+      return this.cascade(rightChildIdx);
     }
     return;
   }
