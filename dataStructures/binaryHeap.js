@@ -35,22 +35,11 @@ class MaxBinaryHeap {
     let leftChild = this.values[leftChildIdx];
     let rightChildIdx = (index * 2) + 2;
     let rightChild = this.values[rightChildIdx]
-    if (leftChild > parent && rightChild > parent) {
-      if (leftChild > rightChild) {
-        this.values[index] = leftChild; // swap old parent with leftChild
-        this.values[leftChildIdx] = parent; 
-        return this.cascade(leftChildIdx);
-      } else {
-        this.values[index] = rightChild;
-        this.values[rightChildIdx] = parent;
-        return this.cascade(rightChildIdx);
-      }
-    }
-    if (leftChild > parent) {
-      this.values[index] = leftChild; // swap old parent with leftChild
+    if (leftChild > parent && leftChild >= rightChild) {
+      this.values[index] = leftChild; 
       this.values[leftChildIdx] = parent; 
       return this.cascade(leftChildIdx);
-    } else if (rightChild > parent) {
+    } else if (rightChild > parent && rightChild >= leftChild) {
       this.values[index] = rightChild;
       this.values[rightChildIdx] = parent;
       return this.cascade(rightChildIdx);
