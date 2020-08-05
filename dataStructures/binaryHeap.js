@@ -49,14 +49,22 @@ class MaxBinaryHeap {
 }
 
 let heap = new MaxBinaryHeap();
-heap.insert(41);
-heap.insert(39);
-heap.insert(33);
-heap.insert(18);
-heap.insert(27);
-heap.insert(12);
-heap.insert(55);
-console.log('before extract ', heap.values)
-console.log('max (old root) ', heap.extractMax())
-console.log('after extract ', heap.values)
+heap.insert(5)
+heap.insert(1)
+heap.insert(4)
+heap.insert(2)
+heap.insert(3);
+console.log('extract: ', heap.extractMax())
+console.log(heap)
+// console.log('before extract ', heap.values)
+// console.log('max (old root) ', heap.extractMax())
+// console.log('after extract ', heap.values)
+
+let newHeap = new MaxBinaryHeap()
+newHeap.insert(5);
+newHeap.insert(1);
+newHeap.insert(4);
+newHeap.insert(2);
+newHeap.insert(3);
+// console.log(newHeap)
 
